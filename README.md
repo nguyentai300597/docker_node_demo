@@ -1,26 +1,27 @@
 # docker_node_demo
 
-<<<<<<< HEAD
 # run jenkins:
  docker-compose up -d
-=======
-<<<<<<< HEAD
-1)Build Docker Image
-docker build -t my-node-app .
 
-2)run container
-docker run -p 3000:3000 my-node-app
+# get password:
+ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
-///Truy cập: http://localhost:3000
+ =>cc08b134e8554084b10f366a1389d4eb
+
+ # user-pass: NGUYENDUCTAI
+
+<!-- # build file jenkin
+ docker build -t jenkins-docker-enabled -f Dockerfile.jenkins . -->
+
+docker run \
+  -u root \
+  -d \
+  -p 8080:8080 -p 50000:50000 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v jenkins_home:/var/jenkins_home \
+  jenkins-docker-enabled
 
 
-3)check container running??
-docker ps
 
-4)stop container
-docker stop <container_id>
-=======
-# run jenkins:
- docker-compose up -d
->>>>>>> 93d3a40 (add jenkins)
->>>>>>> 493fe96 (add)
+
+

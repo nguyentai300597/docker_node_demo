@@ -37,23 +37,20 @@
 
 pipeline {
   agent any
+
   stages {
-    stage('Checkout') {
-            steps {
-                checkout scm // <-- dòng này là bắt buộc
-            }
-        }
-                stage('Clone Code') {
-            steps {
-                git branch: 'jenkinFix',
-                    url: 'https://github.com/nguyentai300597/docker_node_demo.git'
-            }
-        }
+    stage('Clone Code') {
+      steps {
+        git branch: 'jenkinFix',
+            url: 'https://github.com/nguyentai300597/docker_node_demo.git'
+      }
+    }
 
     stage('Install') {
       steps {
-        sh 'docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app node:18 npm install'
+        sh 'docker version'
       }
     }
   }
 }
+
