@@ -1,9 +1,15 @@
 pipeline {
-    agent any  
+    // agent any  
 
     // tools {
     //     nodejs "NodeJS-18" // Tên  cài trong Jenkins 
     // }
+     agent {
+        docker {
+            image 'docker:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     stages {
         stage('Clone Code') {
