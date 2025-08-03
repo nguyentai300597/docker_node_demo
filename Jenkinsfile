@@ -1,5 +1,5 @@
 pipeline {
-     agent any  
+    // agent any  
 
     // tools {
     //     nodejs "NodeJS-18" // Tên  cài trong Jenkins 
