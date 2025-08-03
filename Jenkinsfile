@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     stages {
         stage('Clone Code') {
@@ -16,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'npm install' // nếu có Node.js
             }
         }
 
@@ -36,3 +31,4 @@ pipeline {
         }
     }
 }
+
