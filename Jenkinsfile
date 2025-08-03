@@ -38,6 +38,11 @@
 pipeline {
   agent any
   stages {
+    stage('Checkout') {
+            steps {
+                checkout scm // <-- dòng này là bắt buộc
+            }
+        }
     stage('Install') {
       steps {
         sh 'docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app node:18 npm install'
