@@ -23,7 +23,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                // sh 'npm install'
-               echo '📥 Đang cài đặt các package Node.js...'
+               echo '📥 Đang cài đặt các package Node.js..s.'
             }
         }
 
