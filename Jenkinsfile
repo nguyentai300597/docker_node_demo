@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/nguyentai300597/docker_node_demo.git'
+                git branch: 'main',
+    url: 'https://github.com/nguyentai300597/docker_node_demo.git'
+
             }
         }
 
