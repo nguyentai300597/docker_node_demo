@@ -65,6 +65,13 @@ pipeline {
         failure {
             echo '❌ Có lỗi!'
         }
+         always {
+            echo '🧹 Cleaning up...'
+             // Xoá container nếu có tồn tại
+            sh 'docker rm -f my-node-container || true'
+    
+            // sh 'docker rmi my-node-app || true'
+    }
     }
 }
 
