@@ -47,9 +47,10 @@ pipeline {
     }
 
     stage('Install') {
-      steps {
-        //sh 'docker version'
-        sh 'npm install'
+     steps {
+        sh '''
+          docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app node:18 npm install
+        '''
       }
     }
   }
