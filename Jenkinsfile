@@ -48,7 +48,8 @@ pipeline {
 
     stage('Install') {
       steps {
-        sh 'docker version'
+        //sh 'docker version'
+        sh 'npm install'
       }
     }
   }
