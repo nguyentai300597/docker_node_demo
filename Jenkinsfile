@@ -48,7 +48,32 @@ pipeline {
 
      stage('Build Docker Image') {
       steps {
-        sh 'docker build -t my-node-app .'
+       // sh 'docker build -t my-node-app .'
+       script {
+      sh '''
+        # Dừng container nếu đang chạy
+        if [ "$(docker ps -q -f name=my-node-app-container)" ]; then
+          echo "🛑 Stopping running container..."
+          docker stop my-node-app-container
+        fi
+
+        # Xoá container nếu đã tồn tại
+        if [ "$(docker ps -aq -f name=my-node-app-container)" ]; then
+          echo "🧹 Removing existing container..."
+          docker rm my-node-app-container
+        fi
+
+        # Xoá image cũ (tuỳ chọn)
+        if [ "$(docker images -q my-node-app)" ]; then
+          echo "🧽 Removing existing image..."
+          docker rmi my-node-app
+        fi
+
+        # Build image mới
+        echo "🚀 Building new image..."
+        docker build -t my-node-app .
+      '''
+    }
       }
     }
     stage('Run Docker Container') {
