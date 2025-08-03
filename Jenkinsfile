@@ -20,11 +20,12 @@ pipeline {
             }
         }
 
-        // stage('Install Dependencies') {
-        //     steps {
-        //        // sh 'npm install'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+               // sh 'npm install'
+               echo '📥 Đang cài đặt các package Node.js...'
+            }
+        }
 
         // stage('Run Tests') {
         //     steps {
