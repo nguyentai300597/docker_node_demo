@@ -46,11 +46,9 @@ pipeline {
       }
     }
 
-    stage('Install') {
-     steps {
-        sh '''
-          docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app node:18 npm install
-        '''
+     stage('Build Docker Image') {
+      steps {
+        sh 'docker build -t my-node-app .'
       }
     }
   }
