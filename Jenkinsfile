@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git branch: 'main',
+                git branch: 'jenkinFix',
     url: 'https://github.com/nguyentai300597/docker_node_demo.git'
 
             }
