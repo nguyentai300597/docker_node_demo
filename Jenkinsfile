@@ -1,12 +1,7 @@
 pipeline {
-    // agent any  
-
-    // tools {
-    //     nodejs "NodeJS-18" // Tên  cài trong Jenkins 
-    // }
-     agent {
+    agent {
         docker {
-            image 'docker:latest'
+            image 'node:18'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -15,23 +10,15 @@ pipeline {
         stage('Clone Code') {
             steps {
                 git branch: 'jenkinFix',
-    url: 'https://github.com/nguyentai300597/docker_node_demo.git'
-
+                    url: 'https://github.com/nguyentai300597/docker_node_demo.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-               // sh 'npm install'
-               echo '📥 Đang cài đặt các package Node.js..s.'
+                sh 'npm install'
             }
         }
-
-        // stage('Run Tests') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
 
         stage('Build Docker Image') {
             steps {
